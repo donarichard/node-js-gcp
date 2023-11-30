@@ -1,13 +1,14 @@
 steps:
+# Deploy Cloud Function using Node.js 18 runtime
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'bash'
   args:
-  - gcloud
-  - functions
-  - deploy
-  - helloHttp
-  - --source=.
-  - --trigger-http
-  - --runtime=nodejs18
+  - '-c'
+  - |
+    gcloud beta functions deploy helloHttp \
+      --runtime=nodejs18 \
+      --source=. \
+      --trigger-http
 
 logsBucket: 'gs://mylogs-1'
 options:
