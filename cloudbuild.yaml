@@ -1,0 +1,10 @@
+steps:
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  args:
+  - gcloud
+  - functions
+  - deploy
+  - helloHttp
+  - --source=.
+  - --trigger-http
+  - --runtime=nodejs18
