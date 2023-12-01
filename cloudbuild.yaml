@@ -1,14 +1,15 @@
 steps:
-# Deploy Cloud Function using Node.js 18 runtime
+# Deploy Cloud Function using Node.js 18 runtime with unauthenticated access
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'bash'
   args:
   - '-c'
   - |
-    gcloud beta functions deploy helloHttp \
+    gcloud functions deploy home \
       --runtime=nodejs18 \
       --source=. \
-      --trigger-http
+      --trigger-http \
+      --allow-unauthenticated
 
 logsBucket: 'gs://mylogs-1'
 options:
